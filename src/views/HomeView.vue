@@ -1,7 +1,9 @@
+<script setup lang="ts">
+import Navbar from '@/components/Navbar.vue'
+</script>
+
 <template>
-  <main>
-    <h1 class="text-4xl">
-      test
-    </h1>
-  </main>
+  <div>
+    <Navbar />
+  </div>
 </template>
