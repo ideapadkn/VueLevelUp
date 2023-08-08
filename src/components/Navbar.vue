@@ -5,13 +5,13 @@
     <nav>
       <ul class="flex justify-between items-center gap-5">
         <router-link to="/">
-          <li class="text-xl text-black">Home</li>
+          <li class="text-xl text-black hover:text-yellow-400">Home</li>
         </router-link>
         <router-link to="/catalog">
-          <li class="text-xl text-black">Catalog</li>
+          <li class="text-xl text-black hover:text-yellow-400">Catalog</li>
         </router-link>
         <router-link to="/about">
-          <li class="text-xl text-black">About</li>
+          <li class="text-xl text-black hover:text-yellow-400">About</li>
         </router-link>
       </ul>
     </nav>

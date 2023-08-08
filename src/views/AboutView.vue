@@ -5,6 +5,6 @@ import Navbar from '@/components/Navbar.vue'
 <template>
   <div>
     <Navbar />
-    <h2 class="text-5xl flex justify-center items-center h-[80dvh]">Home</h2>
+    <h2 class="text-5xl flex justify-center items-center h-[80dvh]">About</h2>
   </div>
 </template>

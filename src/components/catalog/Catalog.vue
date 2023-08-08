@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import Navbar from '../Navbar.vue'
 
 const state: { posts: IPost[] } = reactive({
@@ -11,40 +11,73 @@ const state: { posts: IPost[] } = reactive({
       body: 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'
     },
     {
-      id: 1,
+      id: 2,
       userId: 1,
       title: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
       body: 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'
     },
     {
-      id: 1,
+      id: 3,
       userId: 1,
       title: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
       body: 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'
     },
     {
-      id: 1,
+      id: 4,
       userId: 1,
       title: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
       body: 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'
     },
     {
-      id: 1,
+      id: 5,
       userId: 1,
       title: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
       body: 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'
     }
   ]
 })
+const title = ref('')
+
+const removePost = (id: number) => {
+  state.posts = state.posts.filter((post) => post.id !== id)
+}
+const addPost = () => {
+  if (title.value) {
+    state.posts = [
+      ...state.posts,
+      {
+        id: Date.now(),
+        title: title.value,
+        userId: Date.now(),
+        body: 'bla bla bla'
+      }
+    ]
+    title.value = ''
+  } else {
+    console.log('err')
+  }
+}
 </script>
 
 <template>
   <div class="container mx-auto">
     <Navbar />
 
+    <div class="mb-5">
+      <h1 class="font-semibold text-3xl mb-2">Create Post</h1>
+      <form @submit.prevent>
+        <input class="p-2 border-2 mr-5 outline-none focus:border-yellow-400" type="text" v-model.trim="title" />
+        <button class="p-2 border-2 hover:border-yellow-400 transition-all" @click.stop="addPost()">Create Post</button>
+      </form>
+    </div>
     <ul class="mb-5">
-      <li v-for="post in state.posts" :key="post.is">
-        {{ post.title }}
+      <li
+        class="mb-5 border-2 p-2 flex justify-between items-center"
+        v-for="post in state.posts"
+        :key="post.is"
+      >
+        <span class="mr-5">{{ post.title }}</span>
+        <button class="border-2 p-2 hover:border-yellow-400 transition-all" @click="removePost(post.id)">Remove</button>
       </li>
     </ul>
 
