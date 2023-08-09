@@ -65,9 +65,15 @@ const addPost = () => {
 
     <div class="mb-5">
       <h1 class="font-semibold text-3xl mb-2">Create Post</h1>
-      <form @submit.prevent>
-        <input class="p-2 border-2 mr-5 outline-none focus:border-yellow-400" type="text" v-model.trim="title" />
-        <button class="p-2 border-2 hover:border-yellow-400 transition-all" @click.stop="addPost()">Create Post</button>
+      <form class="form" @submit.prevent>
+        <input
+          class="p-2 border-2 mr-5 outline-none focus:border-yellow-400"
+          type="text"
+          v-model.trim="title"
+        />
+        <button class="p-2 border-2 hover:border-yellow-400 transition-all" @click.stop="addPost()">
+          Create Post
+        </button>
       </form>
     </div>
     <ul class="mb-5">
@@ -77,7 +83,12 @@ const addPost = () => {
         :key="post.is"
       >
         <span class="mr-5">{{ post.title }}</span>
-        <button class="border-2 p-2 hover:border-yellow-400 transition-all" @click="removePost(post.id)">Remove</button>
+        <button
+          class="flex justify-center items-center border-2 p-2 text-red-600 rounded-full w-[40px] h-[40px] hover:border-red-600 transition-all"
+          @click="removePost(post.id)"
+        >
+          X
+        </button>
       </li>
     </ul>
 
@@ -106,3 +117,10 @@ const addPost = () => {
     </div>
   </div>
 </template>
+
+<style lang="scss">
+.from {
+  border: 1px solid #777;
+  background-color: red;
+}
+</style>
